@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <title>Message Anonyme</title>
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      background: url("https://kingland.fr/wp-content/uploads/Plongez-dans-lunivers-musical-illimite-avec-Amazon-Music-Unlimited.jpg") no-repeat center center fixed;
+      background: url("https://www.sitew.com/images/blog/articles/guides_users_es/seo_simple/bancos_de_musica/souneffects_es.jpg") no-repeat center center fixed;
       background-size: cover;
-      padding: 30px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       color: white;
     }
 
     h1 {
       background-color: rgba(0,0,0,0.6);
-      display: inline-block;
       padding: 10px 20px;
       border-radius: 10px;
     }
@@ -23,12 +30,11 @@
     form, #merciMessage {
       background: rgba(0,0,0,0.6);
       padding: 20px;
-      margin-top: 30px;
+      margin-top: 20px;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 90%;
+      width: 400px;
     }
 
     input, textarea {
@@ -65,14 +71,12 @@
 
   <h1>💬 Envoie un Message Anonyme</h1>
 
-  <!-- Formulaire -->
   <form id="messageForm">
     <input type="text" name="pseudo" placeholder="Ton pseudo (facultatif)">
     <textarea name="message" placeholder="Ton message ici..." required rows="6"></textarea>
     <button type="submit">Envoyer anonymement</button>
   </form>
 
-  <!-- Message de remerciement -->
   <div id="merciMessage">
     <h2>🙏 Merci pour ton message !</h2>
     <p>Il a bien été envoyé de façon anonyme.</p>
@@ -86,11 +90,9 @@
       e.preventDefault();
 
       const data = new FormData(form);
-      fetch("https://formsubmit.co/ajax/steeveadrien1@mail.com", {
+      fetch("https://formsubmit.co/ajax/steeveadrien1@gmail.com", {
         method: "POST",
-        headers: {
-          'Accept': 'application/json'
-        },
+        headers: { 'Accept': 'application/json' },
         body: data
       })
       .then(response => {
