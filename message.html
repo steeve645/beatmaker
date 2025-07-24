@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Message Anonyme</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("https://kingland.fr/wp-content/uploads/Plongez-dans-lunivers-musical-illimite-avec-Amazon-Music-Unlimited.jpg") no-repeat center center fixed;
+      background-size: cover;
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      background-color: rgba(0,0,0,0.6);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    form, #merciMessage {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00cc66;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00994d;
+    }
+
+    #merciMessage {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💬 Envoie un Message Anonyme</h1>
+
+  <!-- Formulaire -->
+  <form id="messageForm">
+    <input type="text" name="pseudo" placeholder="Ton pseudo (facultatif)">
+    <textarea name="message" placeholder="Ton message ici..." required rows="6"></textarea>
+    <button type="submit">Envoyer anonymement</button>
+  </form>
+
+  <!-- Message de remerciement -->
+  <div id="merciMessage">
+    <h2>🙏 Merci pour ton message !</h2>
+    <p>Il a bien été envoyé de façon anonyme.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById("messageForm");
+    const merci = document.getElementById("merciMessage");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      fetch("https://formsubmit.co/ajax/steeveadrien1@mail.com", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: data
+      })
+      .then(response => {
+        if (response.ok) {
+          form.style.display = "none";
+          merci.style.display = "block";
+        } else {
+          alert("Une erreur est survenue. Réessaye plus tard.");
+        }
+      })
+      .catch(error => alert("Erreur : " + error));
+    });
+  </script>
+
+</body>
+</html>
